@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login & Signup</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #1d2671, #c33764);
+    }
+
+    .container {
+        background: #ffe6f0; /* Soft Pink */
+        width: 350px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    /* Tabs */
+    .tabs {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    .tab {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 8px 8px 0 0;
+        background: #f3f3f3;
+    }
+
+    .tab.active {
+        background: #c33764;
+        color: #fff;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .forgot {
+        text-align: right;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .forgot a {
+        text-decoration: none;
+        color: #c33764;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #c33764;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #a82d54;
+    }
+
+    .bottom-text {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    .bottom-text a {
+        color: #c33764;
+        text-decoration: none;
+    }
+
+    .form {
+        display: none;
+    }
+
+    .form.active {
+        display: block;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <div class="tab active" onclick="showForm('login')">Login</div>
+        <div class="tab" onclick="showForm('signup')">Signup</div>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login" class="form active">
+        <h2>Login Form</h2>
+        <input type="email" placeholder="Email Address">
+        <input type="password" placeholder="Password">
+
+        <div class="forgot">
+            <a href="#">Forgot password?</a>
+        </div>
+
+        <button onclick="login()">Login</button>
+
+        <div class="bottom-text">
+            Not a member? <a href="#" onclick="showForm('signup')">Signup now</a>
+        </div>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signup" class="form">
+        <h2>Signup Form</h2>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email Address">
+        <input type="password" placeholder="Password">
+
+        <button>Signup</button>
+
+        <div class="bottom-text">
+            Already have an account? <a href="#" onclick="showForm('login')">Login</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function showForm(form) {
+        document.querySelectorAll(".form").forEach(f => f.classList.remove("active"));
+        document.getElementById(form).classList.add("active");
+
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        if(form === "login") {
+            document.querySelectorAll(".tab")[0].classList.add("active");
+        } else {
+            document.querySelectorAll(".tab")[1].classList.add("active");
+        }
+    }
+
+    function login() {
+        alert("Login button clicked!");
+    }
+</script>
+
+</body>
+</html>
